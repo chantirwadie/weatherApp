@@ -1,0 +1,51 @@
+<template>
+    <div class="container">
+        <template if:true={weatherDetails.data}>
+            <div class="card">
+                <div class="card-header">
+                    <h2>{weatherDetails.data.name}</h2>
+                    <img src={weatherIcon} alt="weather img">
+
+                </div>
+                <div class="card-body">
+                    <div class="weather-details">
+                        <div class="weather-item">
+                            <span class="label">Weather:</span>
+                            <span class="value">{weatherInfo.main}</span>
+                        </div>
+                        <div class="weather-item">
+                            <div class="label">Temperature:</div>
+                            <div class="value">{weatherDetails.data.main.temp}°C</div>
+                        </div>
+                        <div class="weather-item">
+                            <div class="label">Humidity:</div>
+                            <div class="value">{weatherDetails.data.main.humidity}%</div>
+                        </div>
+                        <div class="weather-item">
+                            <div class="label">Wind Speed:</div>
+                            <div class="value">{weatherDetails.data.wind.speed} mph</div>
+                        </div>
+                        <div class="weather-item">
+                            <span class="label">Description</span>
+                            <span class="value">{weatherInfo.description}</span>
+                        </div>
+                        <article class="slds-card">
+                            <lightning-map
+                                map-markers={cityLatLong}
+                                zoom-level="11"
+                                markers-title="Bears">
+                            </lightning-map>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template if:false={weatherDetails.data}>
+            <div class="card">
+                <div class="card-header">
+                    <h2>Please select a city</h2>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,17 @@
+<template>
+    <template if:true={weatherDetails.data}>
+        <lightning-map
+                                map-markers={cityLatLong}
+                                zoom-level="11"
+                                markers-title="City">
+                            </lightning-map>
+    </template>
+    <template if:false={weatherDetails.data}>
+        <div class="card">
+            <div class="card-header">
+                <h2>Please select a city</h2>
+            </div>
+        </div>
+    </template>
+    
+</template>
